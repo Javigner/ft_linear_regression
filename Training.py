@@ -2,15 +2,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importer le dataset
-dataset = pd.read_csv('Data.csv')
-X = dataset.iloc[:, :-1].values
-y = dataset.iloc[:, -1].values
-theta0 = float(0)
-theta1 = float(0)
-x_test = 240000
-lentest = len(X)
-
 def prediction(theta0, theta1, test_value):
     return (theta0 + theta1 * test_value)
 
@@ -32,7 +23,7 @@ def Gradient_descent(theta0, theta1, X, y):
     learning_rate = 0.001
     tmptheta0 = float(0)
     tmptheta1 = float(0)
-    while (theta0 != tmptheta0 & theta1 != tmptheta1):
+    while (theta0 != tmptheta0 and theta1 != tmptheta1):
         theta0 = tmptheta0
         theta1 = tmptheta1
         tmptheta0 = theta0 - learning_rate * (1 / len(X)) * cost_function_theta0(theta0, theta1, X, y)
@@ -40,8 +31,13 @@ def Gradient_descent(theta0, theta1, X, y):
     return (theta0, theta1)
     
 def main():
-    
-   
+    dataset = pd.read_csv('Data.csv')
+    X = dataset.iloc[:, :-1].values
+    y = dataset.iloc[:, -1].values
+    theta0 = float(0)
+    theta1 = float(0)
+    theta0, theta1 = Gradient_descent(theta0, theta1, X, y)
+    print(prediction(theta0, theta1, 240000))
     
 if __name__ == "__main__":
 	main();
