@@ -1,4 +1,5 @@
 import pandas as pd
+import csv
 
 def prediction(theta0, theta1, test_value):
     return float(theta0 + theta1 * test_value)
@@ -47,6 +48,10 @@ def main():
     theta0, theta1 = Gradient_descent(theta0, theta1, X, y)
     theta0 = theta0 * max(y)
     theta1 = theta1 * (max(y) / max(X))
+    df = pd.read_csv('theta.csv')
+    df.at[0, 'theta0'] = theta0
+    df.at[0, 'theta1'] = theta1
+    df.to_csv('theta.csv', index=False)
     print(theta0, theta1)
     print(prediction(theta0, theta1, 82029))
     
