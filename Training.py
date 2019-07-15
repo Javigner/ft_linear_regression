@@ -1,8 +1,14 @@
 import pandas as pd
-import csv
+import matplotlib.pyplot as plt
 
 def prediction(theta0, theta1, test_value):
     return float(theta0 + theta1 * test_value)
+
+def prediction_plot(theta0, theta1, X):
+    liste = []
+    for i in range(len(X)):
+        liste.append(float(theta0 + theta1 * X[i]))
+    return (liste)
 
 def cost_function_theta0(theta0, theta1, X, y):
     result = 0
@@ -54,7 +60,12 @@ def main():
     df.to_csv('theta.csv', index=False)
     print(theta0, theta1)
     print(prediction(theta0, theta1, 82029))
-    
-    
+    plt.scatter(X, y, color = 'red')
+    plt.plot(X, prediction_plot(theta0, theta1, X), color = 'blue')
+    plt.title('Prix voiture')
+    plt.xlabel('kilometre')
+    plt.ylabel('Prix')
+    plt.show()
+      
 if __name__ == "__main__":
 	main();
