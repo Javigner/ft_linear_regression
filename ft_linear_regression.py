@@ -17,12 +17,13 @@ regressor.fit(X_train, y_train)
 
 # Faire de nouvelles prédictions
 y_pred = regressor.predict(X_test)
-regressor.predict(15)
+regressor.predict([[82029]])
+print(regressor.predict([[82029]]))
 
 # Visualiser les résultats
 plt.scatter(X_test, y_test, color = 'red')
 plt.plot(X_train, regressor.predict(X_train), color = 'blue')
-plt.title('Prix voiture')
-plt.xlabel('kilometre')
+plt.title('Prix  de la voiture')
+plt.xlabel('Kilomètre')
 plt.ylabel('Prix')
 plt.show()

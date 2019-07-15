@@ -58,8 +58,6 @@ def main():
     df.at[0, 'theta0'] = theta0
     df.at[0, 'theta1'] = theta1
     df.to_csv('theta.csv', index=False)
-    print(theta0, theta1)
-    print(prediction(theta0, theta1, 82029))
     plt.scatter(X, y, color = 'red')
     plt.plot(X, prediction_plot(theta0, theta1, X), color = 'blue')
     plt.title('Prix voiture')
