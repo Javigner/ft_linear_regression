@@ -1,5 +1,3 @@
-# Importer les librairies
-import matplotlib.pyplot as plt
 import pandas as pd
 
 def prediction(theta0, theta1, test_value):
@@ -24,7 +22,7 @@ def mean_normalization(liste):
 	return(liste2);
     
 def Gradient_descent(theta0, theta1, X, y):
-    learning_rate = 0.1
+    learning_rate = 1
     tmp0 = float(2)
     tmp1 = float(2)
     X = mean_normalization(X)
@@ -47,10 +45,10 @@ def main():
     theta0 = float(0)
     theta1 = float(0)
     theta0, theta1 = Gradient_descent(theta0, theta1, X, y)
-    theta0 = theta0 * max(y);
-    theta1 = theta1 * max(y) / max(X)
+    theta0 = theta0 * max(y)
+    theta1 = theta1 * (max(y) / max(X))
     print(theta0, theta1)
-    print(prediction(theta0, theta1, 240000))
+    print(prediction(theta0, theta1, 82029))
     
     
 if __name__ == "__main__":
