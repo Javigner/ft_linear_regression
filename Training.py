@@ -22,25 +22,27 @@ def cost_function_theta1(theta0, theta1, X, y):
         result += ((theta0 + theta1 * X[i]) - y[i]) * X[i]
     return result
 
-def mean_normalization(liste):
+def to_list(liste):
 	liste2 = []
 	for x in range(len(liste)):
-		liste2.append(liste[x] / max(liste))
+		liste2.append(liste[x])
 	return(liste2);
     
 def Gradient_descent(theta0, theta1, X, y):
-    learning_rate = 1
+    learning_rate = 0.00000000014
+    learning_ratex = 0.15
     tmp0 = float(2)
     tmp1 = float(2)
-    X = mean_normalization(X)
-    y = mean_normalization(y)
+    X = to_list(X)
+    y = to_list(y)
     while (theta0 != tmp0 and theta1 != tmp1):
         tmp0 = theta0
         tmp1 = theta1
-        tmptheta0 = theta0 - learning_rate * (1.0 / len(X)) * cost_function_theta0(theta0, theta1, X, y)
+        tmptheta0 = theta0 - learning_ratex * (1.0 / len(X)) * cost_function_theta0(theta0, theta1, X, y)
         tmptheta1 = theta1 - learning_rate * (1.0 / len(X)) * cost_function_theta1(theta0, theta1, X, y)
         theta0 = tmptheta0
         theta1 = tmptheta1
+        print(theta0, theta1)
         
         
     return (theta0, theta1)
@@ -52,8 +54,6 @@ def main():
     theta0 = float(0)
     theta1 = float(0)
     theta0, theta1 = Gradient_descent(theta0, theta1, X, y)
-    theta0 = theta0 * max(y)
-    theta1 = theta1 * (max(y) / max(X))
     df = pd.read_csv('theta.csv')
     df.at[0, 'theta0'] = theta0
     df.at[0, 'theta1'] = theta1
