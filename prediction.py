@@ -28,7 +28,7 @@ def main():
             if (X < 0):
                 print("Kilomètrage inferieur à 0. Merci de réessayer.");
     pred = prediction(theta0, theta1, X)
-    print("L'estimation de votre voiture est de " + str(int(pred)) + "$");
+    print("L'estimation de votre voiture est de " + str(int(pred)) + "`");
     if (pred != 0 and theta0 != 0 and theta1 != 0):
         plt.scatter(X_train, y, color = 'red', s = 20, marker = '*')
         plt.scatter(X, pred, color = 'green', s = 150, marker = 'o')
