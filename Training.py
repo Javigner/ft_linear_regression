@@ -16,7 +16,6 @@ def normalize(X):
         X_tmp.append(X[i] / max(X))
     return (X_tmp)   
         
-
 def cost_function_theta0(theta0, theta1, X, y):
     result = 0
     for i in range(len(X)):
@@ -28,13 +27,7 @@ def cost_function_theta1(theta0, theta1, X, y):
     for i in range(len(X)):
         result += ((theta0 + theta1 * X[i]) - y[i]) * X[i]
     return result
-
-def to_list(liste):
-	liste2 = []
-	for x in range(len(liste)):
-		liste2.append(liste[x])
-	return(liste2);
-    
+ 
 def Gradient_descent(theta0, theta1, X, y):
     learning_rate = 1.5
     tmp0 = tmp1 = float(2)
@@ -59,10 +52,8 @@ def main():
     theta0, theta1 = Gradient_descent(theta0, theta1, X, y)
     theta0 = theta0 * max(y)
     theta1 = theta1 * (max(y) / max(X))
-    df = pd.read_csv('theta.csv')
-    df.at[0, 'theta0'] = theta0
-    df.at[0, 'theta1'] = theta1
-    df.to_csv('theta.csv', index=False)
+    df = pd.DataFrame({"theta0": theta0, "theta1": theta1})
+    df.to_csv('theta.csv')
     plt.scatter(X, y, color = 'red')
     plt.plot(X, prediction_plot(theta0, theta1, X), color = 'blue')
     plt.title('Prix voiture')
