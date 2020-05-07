@@ -12,7 +12,7 @@ regressor = LinearRegression()
 regressor.fit(X, y)
 
 # Faire de nouvelles prédictions
-print(regressor.predict([[69000]]))
+print(regressor.predict([[100000]]))
 
 # Visualiser les résultats
 plt.scatter(X, y, color = 'red')
